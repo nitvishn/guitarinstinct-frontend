@@ -1,7 +1,13 @@
+const pitchesToNoteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
 class Note {
     constructor(pitch, octave) {
         this.pitch = pitch;
         this.octave = octave;
+    }
+
+    equals(note){
+        return this.pitch == note.pitch && this.octave == note.octave;
     }
 
     addInterval(interval) {
@@ -20,8 +26,7 @@ class Note {
     }
 }
 
-pitchesToNoteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-stringsToNotes = [new Note(4, 4), new Note(11, 3), new Note(7, 3), new Note(2, 3), new Note(9, 2), new Note(4, 2),];
+const stringsToNotes = [new Note(4, 4), new Note(11, 3), new Note(7, 3), new Note(2, 3), new Note(9, 2), new Note(4, 2),];
 
 class Interval {
     constructor(interval) {
@@ -33,12 +38,20 @@ class Interval {
     }
 }
 
-class GuitarNote {
+export class GuitarNote {
     constructor(string, fret) {
         this.string = string;
         this.fret = fret;
         this.note = stringsToNotes[this.string].clone()
         this.note.addInterval(new Interval(fret));
+    }
+
+    noteEquals(note){
+        return this.note.equals(note.note);
+    }
+
+    equals(note) {
+        return (this.string === note.string && this.fret === note.fret)
     }
 
     toString() {

@@ -16,8 +16,15 @@
     padding: 0;
 }
 
+.error{
+    color: red;
+}
+
+.success{
+    color: greenyellow;
+}
+
 body {
-    background:#161717;
     font-family: Lato, sans-serif;
 }
 .settings {

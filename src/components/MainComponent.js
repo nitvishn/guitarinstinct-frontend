@@ -1,17 +1,22 @@
-import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom';
-import QuizComponent from './QuizComponent';
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import OuterQuizComponent from './OuterQuizComponent';
+import HomeComponent from './HomeComponent';
+import { GuitarNote } from '../helpers/musicEngine';
 
-class Main extends Component{
-    constructor(props){
+class Main extends Component {
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
         return (
             <Switch>
                 <Route path="/">
-                    <QuizComponent></QuizComponent>
+                    <HomeComponent></HomeComponent>
+                </Route>
+                <Route path="/quiz">
+                    <OuterQuizComponent></OuterQuizComponent>
                 </Route>
             </Switch>
         )
